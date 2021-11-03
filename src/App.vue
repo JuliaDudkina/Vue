@@ -4,17 +4,14 @@
       <h1>My Friends</h1>
     </header>
     <ul>
+      <!-- binding component props with data-->
       <friend-contact
-          name="Manuel Lorenz"
-          phone-number="0123 45678 90"
-          email-address="manuel@localhost.com"
-          is-favorite = '1'
-      ></friend-contact>
-      <friend-contact
-          name="Julia Lorenz"
-          phone-number="0123 54534 90"
-          email-address="julia@localhost.com"
-          is-favorite = '0'
+          v-for="friend in friends"
+          :key="friend.id"
+          :name="friend.name"
+          :phone-number="friend.phone"
+          :email-address="friend.email"
+          :is-favorite = 'true'
       ></friend-contact>
     </ul>
   </section>
