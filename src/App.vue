@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
 <template>
   <section>
     <header><h1> My Dear Friends </h1></header>
