@@ -17,6 +17,7 @@
           :email-address="friend.email"
           :is-favorite = 'friend.isFavorite'
           @toggle-favorite="toggleFavoriteEvent"
+          @delete-friend="deleteFriend"
       ></friend-contact>
       <!-- props in template always with dash-->
     </ul>
@@ -59,6 +60,9 @@ export default {
         isFavorite: false,
       };
       this.friends.push(newFriendContact);
+    },
+    deleteFriend(id){
+       this.friends = this.friends.filter(friend => friend.id !== id);
     }
   }
 };

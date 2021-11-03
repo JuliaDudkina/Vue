@@ -13,6 +13,7 @@
         {{ emailAddress }}
       </li>
     </ul>
+    <button @click="deleteFriend">Delete</button>
   </li>
 </template>
 
@@ -56,6 +57,14 @@ export default {
         console.warn('Id is missing');
         false;
       }
+    },
+    'delete-friend': function (id){
+      if(id){
+        return true;
+      } else {
+        console.warn('Id is missing');
+        false;
+      }
     }
   },
   data() {
@@ -70,6 +79,9 @@ export default {
     toggleFavorite(){
         // this.isFriendFavorite = !this.isFriendFavorite;
       this.$emit('toggle-favorite',this.id); // always with dash
+    },
+    deleteFriend(){
+      this.$emit('delete-friend',this.id);
     }
   }
 };
