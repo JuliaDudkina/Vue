@@ -6,7 +6,10 @@
     <button @click="setSelectedComponent('active-goals')">Active Goals</button>
 <!--    <active-goals></active-goals>-->
 <!--    <ManageGoals/>-->
-    <component :is="selectedComponent"></component>
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
+<!--keep avoid to avoid losing info that user adds in components-->
   </div>
 </template>
 
