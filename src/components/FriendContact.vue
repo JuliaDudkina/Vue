@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ isFriendFavorite ? '(My Favorite)': ''}}</h2>
+    <h2>{{ name }} {{ isFavorite ? '(My Favorite)': ''}}</h2>
     <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <button @click="toggleFavorite">Toggle Favorite</button>
     <ul v-if="detailsAreVisible">
@@ -18,8 +18,13 @@
 
 <script>
 export default {
+  // Camel Case for props
   // props: [ 'name','phoneNumber','emailAddress', 'isFavorite'],
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -45,7 +50,6 @@ export default {
   data() {
     return {
       detailsAreVisible: false,
-      isFriendFavorite: this.isFavorite,
     };
   },
   methods: {
@@ -53,7 +57,8 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavorite(){
-        this.isFriendFavorite = !this.isFriendFavorite;
+        // this.isFriendFavorite = !this.isFriendFavorite;
+      this.$emit('toggle-favorite',this.id); // always with dash
     }
   }
 };
